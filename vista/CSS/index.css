@@ -1,0 +1,117 @@
+body{
+    font-family: Cinzel;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-image: url(../IMG/Fondo-restaurante.jpg);
+}
+/*Estilos del header*/
+.nav-item{
+    transition:transform 0.3s;
+    
+}
+.nav-item:hover{
+    transform: scale(1.1);
+    border-radius: 5px;
+}
+
+.btn btn-primary{
+    color: red;
+}
+
+.btn btn-primary{
+    transition:transform 0.3s;
+    
+}
+.btn btn-primary:hover{
+    transform: scale(1.1);
+    border-radius: 5px;
+}
+/*estilos del slider*/
+.slider {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    position: relative;
+    text-align: center;
+}
+
+.slide img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.slider-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-shadow: 2px 2px 5px black;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}   
+/*Estilos de la pestaña "Reservas"*/
+/* Contenedor de la imagen con texto superpuesto */
+.historia-container {
+    position: relative;
+    width: 100%;
+    max-height: 500px;
+    overflow: hidden;
+}
+
+.historia-container img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Texto sobre la imagen */
+.historia-texto {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente */
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 80%;
+    max-width: 600px;
+}
+
+
+
+    
+
