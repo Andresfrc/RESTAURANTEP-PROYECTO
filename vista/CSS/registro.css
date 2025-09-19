@@ -1,117 +1,73 @@
-/* Estilos generales */
+/* style.css */
+
 body {
-    font-family: Cinzel, serif;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    background-image: url(../img/Fondo-restaurante.jpg);
-    background-size: cover;
-    background-position: center;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Caja del formulario */
-.form-box {
-    background: rgba(0, 0, 0, 0.7); /* efecto cristal oscuro */
-    padding: 30px 25px;
-    border-radius: 12px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.5);
-    width: 90%;
-    max-width: 420px;
-    color: white;
-    animation: fadeIn 1s ease;
+.registro-container {
+  background-color: #fff;
+  padding: 30px 40px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
 }
 
-/* Título */
-.form-box h1 {
-    margin-bottom: 20px;
-    font-size: 2rem;
-    color: #ffcc80;
-    text-shadow: 2px 2px 5px black;
+.registro-container h2 {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
 }
 
-/* Inputs */
-.input-group {
-    margin-bottom: 15px;
-    text-align: left;
+form {
+  display: flex;
+  flex-direction: column;
 }
 
-.input-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #ffcc80;
+label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #444;
 }
 
-.input-group input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ff7043;
-    border-radius: 6px;
-    font-size: 1rem;
-    background: rgba(255, 255, 255, 0.9);
-    transition: transform 0.3s, border 0.3s;
+input {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-.input-group input:focus {
-    transform: scale(1.02);
-    border-color: #ffcc80;
-    outline: none;
+button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
-/* Botón */
-.btn {
-    width: 100%;
-    background: #e65100;
-    color: #fff;
-    padding: 12px;
-    border: none;
-    border-radius: 6px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: transform 0.3s, background 0.3s;
+button:hover {
+  background-color: #218838;
 }
 
-.btn:hover {
-    background: #bf360c;
-    transform: scale(1.05);
-}
-
-/* Link de redirección */
 .redirect {
-    margin-top: 15px;
-    font-size: 0.9rem;
-    color: #ffcc80;
+  margin-top: 15px;
+  text-align: center;
 }
 
 .redirect a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s;
+  color: #007bff;
+  text-decoration: none;
 }
 
 .redirect a:hover {
-    color: #ff7043;
-    text-decoration: underline;
-}
-
-/* Animación de entrada */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Responsive */
-@media (max-width: 480px) {
-    .form-box {
-        padding: 20px;
-    }
-    .form-box h1 {
-        font-size: 1.5rem;
-    }
+  text-decoration: underline;
 }

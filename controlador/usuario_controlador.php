@@ -4,8 +4,8 @@ require_once "../../conexion.php";
 class UsuarioController{
     private $modelusuario;
 
-    private function __construct(){
-        $this->$modelusuario= new Usuario()
+    public function __construct(){
+        $this->modelusuario= new Usuario();
     }
 
     public function validarusu(){
@@ -31,6 +31,8 @@ class UsuarioController{
 
 
 }
+$objeto = new UsuarioController();
+$objeto-> validarusu();
 
 
 ?>

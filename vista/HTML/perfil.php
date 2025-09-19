@@ -28,7 +28,7 @@
             <h4><a  class="coso" style="color:white" href="../HTML/index.html">Volver al inicio</a></h4>
             <h2 style="color: red;">JapanFood</h2>
             <h3 class="text-center">Iniciar Sesión</h3>
-            <form>
+            <form action="../controlador/usuario_controlador.php" method="POST">
                 <div class="mb-3">
                     <label for="email" class="form-label">Correo Electrónico</label>
                     <input type="email" class="form-control" id="email" placeholder="correo@example.com" required>
@@ -43,6 +43,8 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
                 <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0&ab_channel=Duran" class="forgot-password">¿Olvidaste tu contraseña?</a>
+                <a href="../HTML/registro.php" class="forgot-password">Crear Cuenta</a>
+                
             </form>
         </div>
     </div>

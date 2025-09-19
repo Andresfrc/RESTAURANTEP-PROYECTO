@@ -1,9 +1,9 @@
 <?php
 require_once "../../conexion.php";
 class Usuario{
-    $db;
-    private function__construct(){
-        this->db=Datbase::connect();
+    private $db;
+    public function __construct(){
+        $this->db=Datbase::connect();
     }
 
     public function obtener_usuario($email){
@@ -17,10 +17,12 @@ class Usuario{
 
     public function login($email,$pass){
         $usuario = $this->obtener_usuario($email);
-        if($usuario && password_verify($pass,$usuario['Password']))
-            return $usuario;
+        if($usuario && password_verify($pass,$usuario['Password'])){
+             return $usuario;
+        }
+            return false;
     }
-    return false;
+   
 
 
     public function listar_usuarios(){
