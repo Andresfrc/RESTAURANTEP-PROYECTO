@@ -25,7 +25,7 @@
     <div class="container">
         <div class="login-container">
 
-            <h4><a  class="coso" style="color:white" href="../HTML/index.html">Volver al inicio</a></h4>
+            <h4><a  class="coso" style="color:white" href="../HTML/index.php">Volver al inicio</a></h4>
             <h2 style="color: red;">JapanFood</h2>
             <h3 class="text-center">Iniciar Sesión</h3>
             <form action="/RESTAURANTEP-PROYECTO/controlador/usuario_controlador.php" method="POST">

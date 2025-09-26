@@ -1,0 +1,77 @@
+/* Fuente similar a la estética japonesa */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Noto+Serif+JP:wght@400;600&display=swap');
+
+body.admin-body {
+    margin: 0;
+    padding: 0;
+    background-color: #111; /* Fondo oscuro */
+    font-family: 'Noto Serif JP', serif;
+    color: #f1f1f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('https://www.transparenttextures.com/patterns/black-orchid.png'); /* Textura elegante */
+}
+
+/* Contenedor central */
+.admin-container {
+    background: rgba(20, 20, 20, 0.95);
+    border: 2px solid #b30000;
+    border-radius: 12px;
+    padding: 40px;
+    max-width: 600px;
+    text-align: center;
+    box-shadow: 0px 0px 25px rgba(179, 0, 0, 0.5);
+}
+
+/* Título principal */
+.admin-titulo {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    color: #e60000;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #b30000;
+    padding-bottom: 10px;
+}
+
+/* Texto secundario */
+.admin-texto {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #ddd;
+}
+
+/* Links estilo botones */
+.admin-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.admin-btn {
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: 2px solid #e60000;
+    color: #fff;
+    background-color: transparent;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.admin-btn:hover {
+    background-color: #e60000;
+    box-shadow: 0px 0px 12px rgba(230, 0, 0, 0.7);
+}
+
+/* Botón rojo destacado */
+.btn-rojo {
+    background-color: #e60000;
+    color: #fff;
+}
+
+.btn-rojo:hover {
+    background-color: #b30000;
+    border-color: #b30000;
+}
