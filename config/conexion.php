@@ -3,7 +3,7 @@ class Database {
     private static $host = "localhost";
     private static $dbname = "JapanFood";
     private static $username = "Andres";
-    private static $password = "Pepe21?";
+    private static $password = "tu_password_segura";
     private static $charset = "utf8mb4";
     private static $pdo = null;
 

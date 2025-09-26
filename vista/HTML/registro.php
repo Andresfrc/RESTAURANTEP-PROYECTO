@@ -9,7 +9,7 @@
 <body>
   <div class="registro-container">
     <h2>Crear Cuenta</h2>
-    <form action="../controlador/usuario_controlador.php" method="POST" class="form-registro">
+    <form action="/RESTAURANTEP-PROYECTO/controlador/usuario_controlador.php" method="POST" class="form-registro">
   <input type="hidden" name="accion" value="registro">
 
   <label for="nombre">Nombre</label>

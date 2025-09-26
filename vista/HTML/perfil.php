@@ -28,14 +28,15 @@
             <h4><a  class="coso" style="color:white" href="../HTML/index.html">Volver al inicio</a></h4>
             <h2 style="color: red;">JapanFood</h2>
             <h3 class="text-center">Iniciar Sesión</h3>
-            <form action="../controlador/usuario_controlador.php" method="POST">
+            <form action="/RESTAURANTEP-PROYECTO/controlador/usuario_controlador.php" method="POST">
+                <input type="hidden" name="accion" value="login">
                 <div class="mb-3">
                     <label for="email" class="form-label">Correo Electrónico</label>
-                    <input type="email" class="form-control" id="email" placeholder="correo@example.com" required>
+                    <input type="email" name="email" class="form-control" id="email" placeholder="correo@example.com" required>
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Contraseña</label>
-                    <input type="password" class="form-control" id="password" placeholder="•••••" required>
+                    <input type="password" name="password" class="form-control" id="password" placeholder="•••••" required>
                 </div>
                 <div class="mb-3 form-check">
                     <input type="checkbox" class="form-check-input" id="remember">
