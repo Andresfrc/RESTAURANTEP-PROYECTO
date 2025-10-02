@@ -47,6 +47,28 @@ class UsuarioController {
         }
     }
 
+    public function crear_desde_admin() {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $nombre = $_POST['nombre'] ?? '';
+        $email = $_POST['email'] ?? '';
+        $password = $_POST['password'] ?? '';
+        $rol = $_POST['rol'] ?? 'Usuario';
+
+        $resultado = $this->modelusuario->crear_usuario($nombre, $email, $password, $rol);
+
+        session_start();
+        if ($resultado) {
+            $_SESSION['mensaje'] = "Usuario creado correctamente.";
+        } else {
+            $_SESSION['error'] = "Error al crear el usuario.";
+        }
+
+        header("Location: ../vista/HTML/bienvenida_admin.php");
+        exit;
+    }
+}
+
+
     private function redirigir_por_rol($usuario) {
         session_start();
         $_SESSION['usuario'] = $usuario;
@@ -97,10 +119,17 @@ class UsuarioController {
 $controller = new UsuarioController();
 
 if (isset($_POST['accion'])) {
-    if ($_POST['accion'] === 'registro') {
-        $controller->registrar();
-    } elseif ($_POST['accion'] === 'login') {
-        $controller->validarusu();
+    switch ($_POST['accion']) {
+        case 'registro':
+            $controller->registrar();
+            break;
+        case 'login':
+            $controller->validarusu();
+            break;
+        case 'crear_desde_admin':
+            $controller->crear_desde_admin();
+            break;
     }
 }
+
 ?>
