@@ -9,7 +9,7 @@ class Usuario {
     }
 
     public function obtener_usuario($email) {
-        $sql = "SELECT * FROM usuarios WHERE email = :email LIMIT 1";
+        $sql = "SELECT * FROM usuarios WHERE Email = :email LIMIT 1";
         $consult = $this->db->prepare($sql);
         $consult->execute([":email" => $email]);
 
@@ -18,7 +18,7 @@ class Usuario {
 
     public function login($email, $pass) {
         $usuario = $this->obtener_usuario($email);
-        if ($usuario && password_verify($pass, $usuario['password'])) {  // 'password' en minúsculas
+        if ($usuario && password_verify($pass, $usuario['Password'])) {  // Password con P mayúscula
             return $usuario;
         }
         return false;
@@ -30,20 +30,20 @@ class Usuario {
     }
 
     public function borrar_usuario($id) {
-        $sql = "DELETE FROM usuarios WHERE id = :id";
+        $sql = "DELETE FROM usuarios WHERE Id_Usuario = :id";
         $stmt = $this->db->prepare($sql);
         return $stmt->execute([":id" => $id]);
     }
 
     public function obtener_usuario_por_id($id) {
-        $sql = "SELECT * FROM usuarios WHERE id = :id";
+        $sql = "SELECT * FROM usuarios WHERE Id_Usuario = :id";
         $stmt = $this->db->prepare($sql);
         $stmt->execute([":id" => $id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     public function actualizar_usuario($id, $nombre, $email, $rol) {
-        $sql = "UPDATE usuarios SET nombre = :nombre, email = :email, rol = :rol WHERE id = :id";
+        $sql = "UPDATE usuarios SET Nombre = :nombre, Email = :email, Rol = :rol WHERE Id_Usuario = :id";
         $stmt = $this->db->prepare($sql);
         return $stmt->execute([
             ":nombre" => $nombre,
@@ -55,7 +55,7 @@ class Usuario {
 
     public function crear_usuario($nombre, $email, $password, $rol = "Usuario") {
         $hash = password_hash($password, PASSWORD_BCRYPT);
-        $sql = "INSERT INTO usuarios (nombre, email, password, rol) 
+        $sql = "INSERT INTO usuarios (Nombre, Email, Password, Rol) 
                 VALUES (:nombre, :email, :password, :rol)";
         $stmt = $this->db->prepare($sql);
         return $stmt->execute([

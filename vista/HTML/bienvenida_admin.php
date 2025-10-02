@@ -5,12 +5,11 @@ if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['Rol'] !== 'Administrad
     exit;
 }
 
-$usuario = $_SESSION['usuario'];
+require_once __DIR__ . "/../../controlador/usuario_controlador.php"; // Solo incluye la clase
 
-// Conexión a la base de datos para obtener los usuarios
-require_once __DIR__ . "/../modelo/usuario.php";
-$usuarioController = new UsuarioController();
-$usuarios = $usuarioController->listar_usuarios();
+$usuarioModel = new Usuario();
+$usuarios = $usuarioModel->listar_usuarios();
+$usuario = $_SESSION['usuario'];
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +24,6 @@ $usuarios = $usuarioController->listar_usuarios();
         <h1 class="admin-titulo">¡Bienvenido Administrador, <?php echo htmlspecialchars($usuario['Nombre']); ?>!</h1>
         <p class="admin-texto">Esta es tu página de administración.</p>
         
-        <!-- Panel de gestión de usuarios -->
         <h2>Gestión de Usuarios</h2>
         <table border="1">
             <thead>
@@ -43,8 +41,8 @@ $usuarios = $usuarioController->listar_usuarios();
                         <td><?php echo htmlspecialchars($user['Email']); ?></td>
                         <td><?php echo htmlspecialchars($user['Rol']); ?></td>
                         <td>
-                            <a href="editar_usuario.php?id=<?php echo $user['id']; ?>">Editar</a> |
-                            <a href="borrar_usuario.php?id=<?php echo $user['id']; ?>">Borrar</a>
+                            <a href="editar_usuario.php?id=<?php echo $user['Id_Usuario']; ?>">Editar</a> |
+                            <a href="borrar_usuario.php?id=<?php echo $user['Id_Usuario']; ?>">Borrar</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
