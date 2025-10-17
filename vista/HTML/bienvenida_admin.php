@@ -17,7 +17,7 @@ $usuario = $_SESSION['usuario'];
 <head>
     <meta charset="UTF-8" />
     <title>Bienvenida Admin</title>
-    <link rel="stylesheet" href="../CSS/bienvenida_admin.css">
+    <link rel="stylesheet" href="../CSS/bienvenida_admin.css" />
 </head>
 <body class="admin-body">
     <div class="admin-container">

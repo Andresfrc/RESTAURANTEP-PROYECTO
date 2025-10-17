@@ -20,13 +20,13 @@ body {
     align-items: center;
 }
 
-/* ====== CONTENEDOR REGISTRO ====== */
-.registro-container {
+/* ====== CONTENEDOR PRINCIPAL ====== */
+.container {
     background: linear-gradient(145deg, rgba(25, 25, 25, 0.98), rgba(20, 20, 20, 0.98));
     border: 2px solid #e60000;
     border-radius: 20px;
     padding: 60px 70px;
-    max-width: 450px;
+    max-width: 600px;
     width: 100%;
     box-shadow: 
         0 0 50px rgba(230, 0, 0, 0.3),
@@ -36,7 +36,7 @@ body {
     overflow: hidden;
 }
 
-.registro-container:hover {
+.container:hover {
     box-shadow: 
         0 0 70px rgba(230, 0, 0, 0.5),
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
@@ -44,10 +44,10 @@ body {
     border-color: #ff3333;
 }
 
-/* ====== TÍTULO ====== */
-.registro-container h2 {
+/* ====== TÍTULO PRINCIPAL ====== */
+.titulo {
     font-family: 'Cinzel', serif;
-    font-size: 2.4rem;
+    font-size: 2.8rem;
     font-weight: 700;
     color: #e60000;
     margin: 0 0 40px 0;
@@ -63,8 +63,8 @@ body {
     text-align: center;
 }
 
-/* ====== FORMULARIO REGISTRO ====== */
-.form-registro {
+/* ====== FORMULARIO ====== */
+.formulario {
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -72,26 +72,62 @@ body {
     z-index: 1;
 }
 
+/* ====== CAMPOS DEL FORMULARIO ====== */
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    animation: slideIn 0.5s ease-out forwards;
+}
+
+.campo:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.campo:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.campo:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.campo:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* ====== LABELS ====== */
-.form-registro label {
+.campo label {
     font-family: 'Cinzel', serif;
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     font-weight: 600;
     color: #ff6666;
     letter-spacing: 0.5px;
     text-transform: uppercase;
     transition: all 0.3s ease;
-    display: block;
-    margin-bottom: 8px;
 }
 
-.form-registro label:hover {
+.campo:hover label {
     color: #ff9999;
     text-shadow: 0 0 8px rgba(230, 0, 0, 0.3);
 }
 
-/* ====== INPUTS ====== */
-.form-registro .input {
+/* ====== INPUTS Y TEXTAREA ====== */
+.campo input[type="text"],
+.campo input[type="number"],
+.campo input[type="file"],
+.campo textarea {
     padding: 14px 16px;
     border: 2px solid rgba(230, 0, 0, 0.3);
     border-radius: 12px;
@@ -100,19 +136,19 @@ body {
     font-family: 'Noto Serif JP', serif;
     font-size: 1rem;
     transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
-    width: 100%;
+    backdrop-filter: blur(10px);
 }
 
-.form-registro .input::placeholder {
+.campo input[type="text"]::placeholder,
+.campo input[type="number"]::placeholder,
+.campo textarea::placeholder {
     color: rgba(241, 241, 241, 0.4);
 }
 
-.form-registro .input:hover {
-    border-color: rgba(230, 0, 0, 0.5);
-    background: rgba(230, 0, 0, 0.05);
-}
-
-.form-registro .input:focus {
+.campo input[type="text"]:focus,
+.campo input[type="number"]:focus,
+.campo input[type="file"]:focus,
+.campo textarea:focus {
     outline: none;
     border-color: #e60000;
     background: rgba(230, 0, 0, 0.08);
@@ -122,8 +158,43 @@ body {
     transform: scale(1.01);
 }
 
-/* ====== BOTÓN REGISTRO ====== */
-.form-registro .btn {
+/* ====== TEXTAREA ====== */
+.campo textarea {
+    resize: vertical;
+    min-height: 120px;
+    line-height: 1.6;
+}
+
+.campo textarea:hover {
+    border-color: rgba(230, 0, 0, 0.5);
+}
+
+/* ====== FILE INPUT ====== */
+.campo input[type="file"] {
+    padding: 14px 16px;
+    cursor: pointer;
+}
+
+.campo input[type="file"]::file-selector-button {
+    background: linear-gradient(135deg, #e60000, #b30000);
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 10px;
+}
+
+.campo input[type="file"]::file-selector-button:hover {
+    background: linear-gradient(135deg, #ff3333, #e60000);
+    box-shadow: 0 4px 12px rgba(230, 0, 0, 0.4);
+}
+
+/* ====== BOTONES ====== */
+button[type="submit"],
+.admin-btn {
     position: relative;
     padding: 16px 32px;
     border-radius: 12px;
@@ -135,14 +206,17 @@ body {
     font-size: 1.05rem;
     letter-spacing: 1px;
     text-transform: uppercase;
+    text-decoration: none;
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+    display: inline-block;
+    text-align: center;
     overflow: hidden;
     box-shadow: 0 6px 20px rgba(230, 0, 0, 0.4);
-    margin-top: 12px;
 }
 
-.form-registro .btn::before {
+button[type="submit"]::before,
+.admin-btn::before {
     content: "";
     position: absolute;
     top: 0;
@@ -154,55 +228,47 @@ body {
     z-index: 0;
 }
 
-.form-registro .btn:hover {
+button[type="submit"]:hover,
+.admin-btn:hover {
     background: linear-gradient(135deg, #ff3333, #e60000);
     border-color: #ff6666;
     box-shadow: 0 12px 35px rgba(230, 0, 0, 0.6);
     transform: translateY(-3px);
 }
 
-.form-registro .btn:hover::before {
+button[type="submit"]:hover::before,
+.admin-btn:hover::before {
     left: 100%;
 }
 
-.form-registro .btn:active {
+button[type="submit"]:active,
+.admin-btn:active {
     transform: translateY(-1px);
 }
 
-.form-registro .btn span {
+button[type="submit"] span,
+.admin-btn span {
     position: relative;
     z-index: 1;
 }
 
-/* ====== TEXTO DE REDIRECCIÓN ====== */
-.redirect {
-    text-align: center;
-    margin-top: 30px;
-    color: #c8c8c8;
-    font-size: 1rem;
-    line-height: 1.6;
-    position: relative;
-    z-index: 1;
+/* ====== CONTENEDOR DE BOTONES ====== */
+.formulario {
+    gap: 20px;
 }
 
-.redirect a {
-    color: #ff6666;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    padding: 4px 8px;
-    border-radius: 4px;
+button[type="submit"] {
+    margin-bottom: 8px;
 }
 
-.redirect a:hover {
-    color: #fff;
-    background-color: rgba(230, 0, 0, 0.2);
-    text-shadow: 0 0 8px rgba(230, 0, 0, 0.5);
+.admin-btn {
+    width: 100%;
+    padding: 14px 32px;
 }
 
 /* ====== EFECTOS DECORATIVOS ====== */
-.registro-container::before,
-.registro-container::after {
+.container::before,
+.container::after {
     content: "";
     position: absolute;
     border-radius: 50%;
@@ -211,7 +277,7 @@ body {
     pointer-events: none;
 }
 
-.registro-container::before {
+.container::before {
     width: 200px;
     height: 200px;
     top: -100px;
@@ -220,7 +286,7 @@ body {
     filter: blur(40px);
 }
 
-.registro-container::after {
+.container::after {
     width: 200px;
     height: 200px;
     bottom: -100px;
@@ -229,12 +295,12 @@ body {
     filter: blur(40px);
 }
 
-.registro-container:hover::before {
+.container:hover::before {
     top: -50px;
     left: -50px;
 }
 
-.registro-container:hover::after {
+.container:hover::after {
     bottom: -50px;
     right: -50px;
 }
@@ -245,76 +311,74 @@ body {
         padding: 10px;
     }
 
-    .registro-container {
+    .container {
         padding: 40px 30px;
         border-radius: 16px;
     }
 
-    .registro-container h2 {
+    .titulo {
         font-size: 2rem;
         margin-bottom: 30px;
     }
 
-    .form-registro {
+    .formulario {
         gap: 18px;
     }
 
-    .form-registro label {
+    .campo label {
         font-size: 1rem;
     }
 
-    .form-registro .input {
+    .campo input[type="text"],
+    .campo input[type="number"],
+    .campo input[type="file"],
+    .campo textarea {
         padding: 12px 14px;
         font-size: 0.95rem;
     }
 
-    .form-registro .btn {
+    button[type="submit"],
+    .admin-btn {
         padding: 14px 24px;
         font-size: 0.95rem;
     }
 
-    .redirect {
-        font-size: 0.95rem;
-        margin-top: 25px;
-    }
-
-    .registro-container::before,
-    .registro-container::after {
+    .container::before,
+    .container::after {
         width: 120px;
         height: 120px;
     }
 }
 
 @media (max-width: 480px) {
-    .registro-container {
+    .container {
         padding: 30px 20px;
     }
 
-    .registro-container h2 {
+    .titulo {
         font-size: 1.6rem;
         margin-bottom: 25px;
     }
 
-    .form-registro {
-        gap: 16px;
-    }
-
-    .form-registro label {
+    .campo label {
         font-size: 0.95rem;
     }
 
-    .form-registro .input {
+    .campo input[type="text"],
+    .campo input[type="number"],
+    .campo input[type="file"],
+    .campo textarea {
         padding: 12px 12px;
         font-size: 0.9rem;
     }
 
-    .form-registro .btn {
-        padding: 12px 20px;
-        font-size: 0.9rem;
+    .campo textarea {
+        min-height: 100px;
     }
 
-    .redirect {
+    button[type="submit"],
+    .admin-btn {
+        padding: 12px 20px;
         font-size: 0.9rem;
-        margin-top: 20px;
     }
 }

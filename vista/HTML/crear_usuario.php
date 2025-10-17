@@ -11,7 +11,7 @@ if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['Rol'] !== 'Administrad
 <head>
     <meta charset="UTF-8">
     <title>Crear Usuario</title>
-    <link rel="stylesheet" href="../CSS/bienvenida_admin.css"> <!-- Usa tu CSS existente -->
+    <link rel="stylesheet" href="../CSS/crear_usuario.css"> <!-- Usa tu CSS existente -->
 </head>
 <body class="admin-body">
     <div class="admin-container">
