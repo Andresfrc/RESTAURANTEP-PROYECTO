@@ -9,7 +9,6 @@ class Database {
 
     private function __construct() {}
 
-    // Cambié a public para que puedas acceder desde fuera de la clase
     public static function connect() {
         if (self::$pdo === null) {
             try {

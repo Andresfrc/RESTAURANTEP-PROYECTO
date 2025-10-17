@@ -51,6 +51,7 @@ $usuario = $_SESSION['usuario'];
 
         <div class="admin-links">
             <a href="crear_usuario.php" class="admin-btn">Crear Nuevo Usuario</a>
+            <a href="crear_plato.php" class="admin-btn">Agregar plato nuevo</a>
             <a href="index.php" class="admin-btn">Ir al panel principal</a>
             <a href="./perfil.php" class="admin-btn btn-rojo">Cerrar sesión</a>
         </div>

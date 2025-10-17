@@ -74,9 +74,7 @@ CREATE TABLE `platillo` (
   `Descripcion` VARCHAR(255) DEFAULT NULL,
   `Precio` DECIMAL(10,2) DEFAULT NULL,
   `Imagen` VARCHAR(255) DEFAULT NULL,
-  `CategoriaId_Categoria` INT(5) DEFAULT NULL,
-  PRIMARY KEY (`Id_Platillo`),
-  KEY `CategoriaId_Categoria` (`CategoriaId_Categoria`)
+  PRIMARY KEY (`Id_Platillo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
