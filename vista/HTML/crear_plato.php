@@ -33,6 +33,8 @@
 
             <button type="submit">Agregar Platillo</button>
             <a href="bienvenida_admin.php" class="admin-btn">Volver al Panel</a>
+            <a href="listar_platos.php" class="admin-btn">Ver lista de platillos</a>
+
         </form>
     </div>
 </body>

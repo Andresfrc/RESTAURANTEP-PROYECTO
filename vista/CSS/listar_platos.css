@@ -1,0 +1,405 @@
+/* Fuente con estética japonesa refinada */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Serif+JP:wght@400;600&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(230, 0, 0, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(179, 0, 0, 0.08) 0%, transparent 50%);
+    font-family: 'Noto Serif JP', serif;
+    color: #f1f1f1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 40px;
+}
+
+/* ====== CONTENEDOR PRINCIPAL ====== */
+.container {
+    background: linear-gradient(145deg, rgba(25, 25, 25, 0.98), rgba(20, 20, 20, 0.98));
+    border: 2px solid #e60000;
+    border-radius: 20px;
+    padding: 60px 70px;
+    max-width: 1200px;
+    width: 100%;
+    box-shadow: 
+        0 0 50px rgba(230, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+    overflow: hidden;
+}
+
+.container:hover {
+    box-shadow: 
+        0 0 70px rgba(230, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    border-color: #ff3333;
+}
+
+/* ====== TÍTULO PRINCIPAL ====== */
+.titulo {
+    font-family: 'Cinzel', serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #e60000;
+    margin: 0 0 35px 0;
+    padding-bottom: 20px;
+    border-bottom: 3px solid;
+    border-image: linear-gradient(90deg, #e60000, #b30000, transparent) 1;
+    letter-spacing: 2px;
+    text-shadow: 0 4px 15px rgba(230, 0, 0, 0.4);
+    background: linear-gradient(135deg, #e60000, #ff6666);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* ====== CONTENEDOR DE BOTONES ====== */
+.botones {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+}
+
+/* ====== BOTONES SUPERIORES ====== */
+.btn-agregar,
+.btn-volver {
+    position: relative;
+    padding: 14px 28px;
+    border-radius: 12px;
+    border: 2px solid #e60000;
+    color: #fff;
+    background: linear-gradient(135deg, #e60000, #b30000);
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+    display: inline-block;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(230, 0, 0, 0.4);
+}
+
+.btn-agregar::before,
+.btn-volver::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+    z-index: 0;
+}
+
+.btn-agregar:hover,
+.btn-volver:hover {
+    background: linear-gradient(135deg, #ff3333, #e60000);
+    border-color: #ff6666;
+    box-shadow: 0 12px 35px rgba(230, 0, 0, 0.6);
+    transform: translateY(-3px);
+}
+
+.btn-agregar:hover::before,
+.btn-volver:hover::before {
+    left: 100%;
+}
+
+/* ====== TABLA ====== */
+.tabla {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: inset 0 0 20px rgba(230, 0, 0, 0.08);
+    position: relative;
+    z-index: 1;
+}
+
+.tabla thead {
+    background: linear-gradient(90deg, rgba(230, 0, 0, 0.3), rgba(179, 0, 0, 0.2));
+    border-bottom: 2px solid #e60000;
+}
+
+.tabla thead th {
+    padding: 18px 16px;
+    text-align: left;
+    font-family: 'Cinzel', serif;
+    font-size: 1.05rem;
+    color: #ff6666;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.tabla tbody td {
+    padding: 16px;
+    border-bottom: 1px solid rgba(230, 0, 0, 0.15);
+    color: #d0d0d0;
+    font-size: 1rem;
+    vertical-align: middle;
+}
+
+.tabla tbody tr {
+    transition: all 0.3s ease;
+}
+
+.tabla tbody tr:hover {
+    background-color: rgba(230, 0, 0, 0.1);
+    box-shadow: inset 0 0 15px rgba(230, 0, 0, 0.08);
+}
+
+.tabla tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* ====== CELDAS ESPECIALES ====== */
+.tabla tbody td:first-child {
+    font-weight: 600;
+    color: #ff6666;
+}
+
+.tabla tbody td img {
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid rgba(230, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.tabla tbody td img:hover {
+    transform: scale(1.1);
+    border-color: #e60000;
+    box-shadow: 0 8px 20px rgba(230, 0, 0, 0.4);
+}
+
+/* ====== MENSAJE SIN IMAGEN ====== */
+.tabla tbody td span[style*="color:gray"] {
+    color: #888 !important;
+    font-style: italic;
+}
+
+/* ====== BOTONES DE ACCIONES ====== */
+.btn-editar,
+.btn-eliminar {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    margin: 4px;
+    border: 2px solid transparent;
+}
+
+.btn-editar {
+    background: linear-gradient(135deg, rgba(255, 165, 0, 0.2), rgba(255, 140, 0, 0.2));
+    color: #ffa500;
+    border-color: rgba(255, 165, 0, 0.3);
+}
+
+.btn-editar:hover {
+    background: linear-gradient(135deg, #ffa500, #ff8c00);
+    color: #fff;
+    border-color: #ffa500;
+    box-shadow: 0 6px 20px rgba(255, 165, 0, 0.4);
+    transform: translateY(-2px);
+}
+
+.btn-eliminar {
+    background: linear-gradient(135deg, rgba(220, 20, 60, 0.2), rgba(178, 34, 34, 0.2));
+    color: #dc143c;
+    border-color: rgba(220, 20, 60, 0.3);
+}
+
+.btn-eliminar:hover {
+    background: linear-gradient(135deg, #dc143c, #b22222);
+    color: #fff;
+    border-color: #dc143c;
+    box-shadow: 0 6px 20px rgba(220, 20, 60, 0.4);
+    transform: translateY(-2px);
+}
+
+/* ====== MENSAJE SIN PLATILLOS ====== */
+.tabla tbody tr td[colspan] {
+    text-align: center;
+    color: #888;
+    font-style: italic;
+    padding: 40px;
+    font-size: 1.1rem;
+}
+
+/* ====== EFECTOS DECORATIVOS ====== */
+.container::before,
+.container::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    z-index: 0;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+    pointer-events: none;
+}
+
+.container::before {
+    width: 200px;
+    height: 200px;
+    top: -100px;
+    left: -100px;
+    background: radial-gradient(circle, rgba(230, 0, 0, 0.15), transparent 70%);
+    filter: blur(40px);
+}
+
+.container::after {
+    width: 200px;
+    height: 200px;
+    bottom: -100px;
+    right: -100px;
+    background: radial-gradient(circle, rgba(179, 0, 0, 0.15), transparent 70%);
+    filter: blur(40px);
+}
+
+.container:hover::before {
+    top: -50px;
+    left: -50px;
+}
+
+.container:hover::after {
+    bottom: -50px;
+    right: -50px;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 1024px) {
+    .container {
+        padding: 50px 40px;
+    }
+
+    .titulo {
+        font-size: 2.4rem;
+    }
+
+    .tabla thead th,
+    .tabla tbody td {
+        padding: 14px 12px;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 40px 30px;
+        border-radius: 16px;
+    }
+
+    .titulo {
+        font-size: 2rem;
+        margin-bottom: 25px;
+    }
+
+    .botones {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .btn-agregar,
+    .btn-volver {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Tabla responsive - Scroll horizontal */
+    .tabla {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .tabla thead,
+    .tabla tbody,
+    .tabla tr {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    .tabla thead th,
+    .tabla tbody td {
+        padding: 12px 8px;
+        font-size: 0.85rem;
+    }
+
+    .tabla tbody td img {
+        width: 80px !important;
+        height: 64px !important;
+    }
+
+    .btn-editar,
+    .btn-eliminar {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+        display: block;
+        margin: 4px 0;
+    }
+
+    .container::before,
+    .container::after {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 30px 20px;
+    }
+
+    .titulo {
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+    }
+
+    .botones {
+        margin-bottom: 30px;
+    }
+
+    .btn-agregar,
+    .btn-volver {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
+
+    .tabla thead th,
+    .tabla tbody td {
+        padding: 10px 6px;
+        font-size: 0.8rem;
+    }
+
+    .tabla tbody td img {
+        width: 60px !important;
+        height: 48px !important;
+    }
+}

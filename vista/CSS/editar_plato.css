@@ -1,0 +1,421 @@
+/* Fuente con estética japonesa refinada */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Serif+JP:wght@400;600&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(230, 0, 0, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(179, 0, 0, 0.08) 0%, transparent 50%);
+    font-family: 'Noto Serif JP', serif;
+    color: #f1f1f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ====== CONTENEDOR PRINCIPAL ====== */
+.container {
+    background: linear-gradient(145deg, rgba(25, 25, 25, 0.98), rgba(20, 20, 20, 0.98));
+    border: 2px solid #e60000;
+    border-radius: 20px;
+    padding: 60px 70px;
+    max-width: 700px;
+    width: 100%;
+    box-shadow: 
+        0 0 50px rgba(230, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+    overflow: hidden;
+}
+
+.container:hover {
+    box-shadow: 
+        0 0 70px rgba(230, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transform: translateY(-5px);
+    border-color: #ff3333;
+}
+
+/* ====== TÍTULO PRINCIPAL ====== */
+.titulo {
+    font-family: 'Cinzel', serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #e60000;
+    margin: 0 0 40px 0;
+    padding-bottom: 20px;
+    border-bottom: 3px solid;
+    border-image: linear-gradient(90deg, #e60000, #b30000, transparent) 1;
+    letter-spacing: 2px;
+    text-shadow: 0 4px 15px rgba(230, 0, 0, 0.4);
+    background: linear-gradient(135deg, #e60000, #ff6666);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
+}
+
+/* ====== FORMULARIO ====== */
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ====== CAMPOS DEL FORMULARIO ====== */
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    animation: slideIn 0.5s ease-out forwards;
+}
+
+.campo:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.campo:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.campo:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.campo:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.campo:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ====== LABELS ====== */
+.campo label {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ff6666;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.campo:hover label {
+    color: #ff9999;
+    text-shadow: 0 0 8px rgba(230, 0, 0, 0.3);
+}
+
+/* ====== INPUTS Y TEXTAREA ====== */
+.campo input[type="text"],
+.campo input[type="number"],
+.campo input[type="file"],
+.campo textarea {
+    padding: 14px 16px;
+    border: 2px solid rgba(230, 0, 0, 0.3);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    color: #f1f1f1;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1rem;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+    backdrop-filter: blur(10px);
+}
+
+.campo input[type="text"]::placeholder,
+.campo input[type="number"]::placeholder,
+.campo textarea::placeholder {
+    color: rgba(241, 241, 241, 0.4);
+}
+
+.campo input[type="text"]:focus,
+.campo input[type="number"]:focus,
+.campo input[type="file"]:focus,
+.campo textarea:focus {
+    outline: none;
+    border-color: #e60000;
+    background: rgba(230, 0, 0, 0.08);
+    box-shadow: 
+        0 0 20px rgba(230, 0, 0, 0.3),
+        inset 0 0 15px rgba(230, 0, 0, 0.05);
+    transform: scale(1.01);
+}
+
+/* ====== TEXTAREA ====== */
+.campo textarea {
+    resize: vertical;
+    min-height: 120px;
+    line-height: 1.6;
+}
+
+.campo textarea:hover {
+    border-color: rgba(230, 0, 0, 0.5);
+}
+
+/* ====== FILE INPUT ====== */
+.campo input[type="file"] {
+    padding: 14px 16px;
+    cursor: pointer;
+}
+
+.campo input[type="file"]::file-selector-button {
+    background: linear-gradient(135deg, #e60000, #b30000);
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 10px;
+}
+
+.campo input[type="file"]::file-selector-button:hover {
+    background: linear-gradient(135deg, #ff3333, #e60000);
+    box-shadow: 0 4px 12px rgba(230, 0, 0, 0.4);
+}
+
+/* ====== PREVIEW DE IMAGEN ACTUAL ====== */
+.campo img {
+    object-fit: cover;
+    border-radius: 12px;
+    border: 3px solid rgba(230, 0, 0, 0.4);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(230, 0, 0, 0.2);
+    max-width: 100%;
+    height: auto;
+}
+
+.campo img:hover {
+    transform: scale(1.05);
+    border-color: #e60000;
+    box-shadow: 0 8px 25px rgba(230, 0, 0, 0.5);
+}
+
+/* ====== TEXTO "SIN IMAGEN" ====== */
+.campo span {
+    color: #888;
+    font-style: italic;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    border: 2px dashed rgba(230, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* ====== CONTENEDOR DE IMAGEN ACTUAL ====== */
+.campo br {
+    display: none;
+}
+
+/* ====== BOTONES ====== */
+button[type="submit"],
+.admin-btn {
+    position: relative;
+    padding: 16px 32px;
+    border-radius: 12px;
+    border: 2px solid #e60000;
+    color: #fff;
+    background: linear-gradient(135deg, #e60000, #b30000);
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+    display: inline-block;
+    text-align: center;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(230, 0, 0, 0.4);
+}
+
+button[type="submit"]::before,
+.admin-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+    z-index: 0;
+}
+
+button[type="submit"]:hover,
+.admin-btn:hover {
+    background: linear-gradient(135deg, #ff3333, #e60000);
+    border-color: #ff6666;
+    box-shadow: 0 12px 35px rgba(230, 0, 0, 0.6);
+    transform: translateY(-3px);
+}
+
+button[type="submit"]:hover::before,
+.admin-btn:hover::before {
+    left: 100%;
+}
+
+button[type="submit"]:active,
+.admin-btn:active {
+    transform: translateY(-1px);
+}
+
+button[type="submit"] span,
+.admin-btn span {
+    position: relative;
+    z-index: 1;
+}
+
+/* ====== BOTÓN VOLVER ====== */
+.admin-btn {
+    width: 100%;
+    padding: 14px 32px;
+    margin-top: 8px;
+    background: linear-gradient(135deg, rgba(230, 0, 0, 0.2), rgba(179, 0, 0, 0.2));
+    border-color: rgba(230, 0, 0, 0.5);
+}
+
+.admin-btn:hover {
+    background: linear-gradient(135deg, #e60000, #b30000);
+    border-color: #e60000;
+}
+
+/* ====== EFECTOS DECORATIVOS ====== */
+.container::before,
+.container::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    z-index: 0;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+    pointer-events: none;
+}
+
+.container::before {
+    width: 200px;
+    height: 200px;
+    top: -100px;
+    left: -100px;
+    background: radial-gradient(circle, rgba(230, 0, 0, 0.15), transparent 70%);
+    filter: blur(40px);
+}
+
+.container::after {
+    width: 200px;
+    height: 200px;
+    bottom: -100px;
+    right: -100px;
+    background: radial-gradient(circle, rgba(179, 0, 0, 0.15), transparent 70%);
+    filter: blur(40px);
+}
+
+.container:hover::before {
+    top: -50px;
+    left: -50px;
+}
+
+.container:hover::after {
+    bottom: -50px;
+    right: -50px;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 700px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 40px 30px;
+        border-radius: 16px;
+    }
+
+    .titulo {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+
+    .formulario {
+        gap: 18px;
+    }
+
+    .campo label {
+        font-size: 1rem;
+    }
+
+    .campo input[type="text"],
+    .campo input[type="number"],
+    .campo input[type="file"],
+    .campo textarea {
+        padding: 12px 14px;
+        font-size: 0.95rem;
+    }
+
+    button[type="submit"],
+    .admin-btn {
+        padding: 14px 24px;
+        font-size: 0.95rem;
+    }
+
+    .container::before,
+    .container::after {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 30px 20px;
+    }
+
+    .titulo {
+        font-size: 1.6rem;
+        margin-bottom: 25px;
+    }
+
+    .campo label {
+        font-size: 0.95rem;
+    }
+
+    .campo input[type="text"],
+    .campo input[type="number"],
+    .campo input[type="file"],
+    .campo textarea {
+        padding: 12px 12px;
+        font-size: 0.9rem;
+    }
+
+    .campo textarea {
+        min-height: 100px;
+    }
+
+    button[type="submit"],
+    .admin-btn {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
+}
