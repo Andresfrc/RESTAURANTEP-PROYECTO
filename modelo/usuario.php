@@ -53,6 +53,29 @@ class Usuario {
         ]);
     }
 
+    public function actualizar_perfil($id, $nombre, $password = null) {
+    if ($password) {
+        $hash = password_hash($password, PASSWORD_BCRYPT);
+        $sql = "UPDATE usuarios SET Nombre = :nombre, Password = :password WHERE Id_Usuario = :id";
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute([
+            ":nombre" => $nombre,
+            ":password" => $hash,
+            ":id" => $id
+        ]);
+    } else {
+        $sql = "UPDATE usuarios SET Nombre = :nombre WHERE Id_Usuario = :id";
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute([
+            ":nombre" => $nombre,
+            ":id" => $id
+        ]);
+    }
+}
+    
+
+
+
     public function crear_usuario($nombre, $email, $password, $rol = "Usuario") {
         $hash = password_hash($password, PASSWORD_BCRYPT);
         $sql = "INSERT INTO usuarios (Nombre, Email, Password, Rol) 

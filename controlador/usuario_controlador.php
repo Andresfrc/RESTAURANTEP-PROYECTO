@@ -114,7 +114,35 @@ class UsuarioController {
         header("Location: ../vista/HTML/perfil.php");
         exit;
     }
-}
+
+    public function actualizar_perfil() {
+        session_start();
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['usuario'])) {
+            $id = $_SESSION['usuario']['Id_Usuario'];
+            $nombre = $_POST['nombre'] ?? '';
+            $password = $_POST['password'] ?? '';
+
+            $resultado = $this->modelusuario->actualizar_perfil($id, $nombre, $password ?: null);
+
+            if ($resultado) {
+                // Actualizar los datos de sesión
+                $_SESSION['usuario']['Nombre'] = $nombre;
+                $_SESSION['mensaje'] = "Perfil actualizado correctamente.";
+            } else {
+                $_SESSION['error'] = "Error al actualizar el perfil.";
+            }
+
+            header("Location: ../vista/HTML/perfil_usuario.php");
+            exit;
+        }
+    }
+} 
+    
+
+
+
+
 
 $controller = new UsuarioController();
 
@@ -129,6 +157,10 @@ if (isset($_POST['accion'])) {
         case 'crear_desde_admin':
             $controller->crear_desde_admin();
             break;
+        case 'actualizar_perfil':
+            $controller->actualizar_perfil();
+            break;
+    
     }
 }
 
