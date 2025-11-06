@@ -1,3 +1,4 @@
+-- Active: 1755274355020@@127.0.0.1@3306@mysql
 CREATE DATABASE JapanFood;
 USE JapanFood;
 
