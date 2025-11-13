@@ -1,0 +1,314 @@
+/* Fuente con estética japonesa refinada */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Serif+JP:wght@400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    background: radial-gradient(circle at 20% 50%, rgba(230, 0, 0, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(179, 0, 0, 0.08) 0%, transparent 50%),
+                linear-gradient(135deg, #0b0b0b 0%, #161616 100%);
+    font-family: 'Noto Serif JP', serif;
+    color: #f1f1f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ====== CONTENEDOR PRINCIPAL ====== */
+.container {
+    background: rgba(25, 25, 25, 0.96);
+    border: 1.5px solid #e60000;
+    border-radius: 20px;
+    padding: 50px 60px;
+    max-width: 650px;
+    width: 100%;
+    box-shadow:
+        0 0 45px rgba(230, 0, 0, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+    transition: 0.4s ease;
+}
+
+.container:hover {
+    box-shadow:
+        0 0 70px rgba(230, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transform: translateY(-4px);
+    border-color: #ff3333;
+}
+
+/* ====== EFECTOS DE FONDO ====== */
+.container::before,
+.container::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    z-index: 0;
+    filter: blur(40px);
+    transition: all 0.6s ease;
+    pointer-events: none;
+}
+
+.container::before {
+    width: 200px;
+    height: 200px;
+    top: -80px;
+    left: -80px;
+    background: radial-gradient(circle, rgba(230, 0, 0, 0.15), transparent 70%);
+}
+
+.container::after {
+    width: 200px;
+    height: 200px;
+    bottom: -80px;
+    right: -80px;
+    background: radial-gradient(circle, rgba(179, 0, 0, 0.15), transparent 70%);
+}
+
+.container:hover::before {
+    top: -50px;
+    left: -50px;
+}
+
+.container:hover::after {
+    bottom: -50px;
+    right: -50px;
+}
+
+/* ====== TÍTULO ====== */
+.titulo {
+    font-family: 'Cinzel', serif;
+    font-size: 2.3rem;
+    font-weight: 700;
+    margin-bottom: 35px;
+    text-align: center;
+    letter-spacing: 2px;
+    background: linear-gradient(135deg, #ff3333, #ff6666);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border-bottom: 2px solid rgba(230, 0, 0, 0.4);
+    padding-bottom: 15px;
+    text-shadow: 0 2px 10px rgba(230, 0, 0, 0.4);
+    position: relative;
+    z-index: 1;
+}
+
+/* ====== FORMULARIO ====== */
+.formulario {
+    position: relative;
+    z-index: 1;
+}
+
+/* ====== CAMPOS ====== */
+.campo {
+    margin-bottom: 28px;
+}
+
+.campo label {
+    display: block;
+    margin-bottom: 10px;
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ff8080;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.campo input[type="text"],
+.campo input[type="email"],
+.campo input[type="password"],
+.campo select {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1.5px solid rgba(230, 0, 0, 0.3);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    color: #f1f1f1;
+    font-size: 1rem;
+    font-family: 'Noto Serif JP', serif;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+}
+
+.campo input[type="text"]:focus,
+.campo input[type="email"]:focus,
+.campo input[type="password"]:focus,
+.campo select:focus {
+    outline: none;
+    border-color: #e60000;
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 20px rgba(230, 0, 0, 0.3);
+}
+
+/* ====== INPUT DESHABILITADO ====== */
+.campo input[type="email"]:disabled {
+    background-color: rgba(80, 80, 80, 0.3) !important;
+    cursor: not-allowed !important;
+    border-color: rgba(150, 150, 150, 0.3);
+    color: #999;
+}
+
+/* ====== SELECT ====== */
+.campo select {
+    cursor: pointer;
+}
+
+.campo select option {
+    background: #1a1a1a;
+    color: #f1f1f1;
+    padding: 10px;
+}
+
+/* ====== TEXTO PEQUEÑO ====== */
+.campo small {
+    display: block;
+    margin-top: 6px;
+    color: #999;
+    font-size: 0.85rem;
+    font-style: italic;
+}
+
+/* ====== BOTÓN SUBMIT ====== */
+button[type="submit"] {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #e60000, #ff3333);
+    border: 2px solid #ff6666;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+button[type="submit"]::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.6s ease;
+}
+
+button[type="submit"]:hover::before {
+    left: 100%;
+}
+
+button[type="submit"]:hover {
+    background: linear-gradient(135deg, #ff3333, #ff6666);
+    box-shadow: 0 0 30px rgba(230, 0, 0, 0.6);
+    transform: translateY(-2px);
+}
+
+button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+/* ====== BOTÓN VOLVER ====== */
+.admin-btn {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 12px;
+    border: 2px solid #e60000;
+    color: #fff;
+    background-color: transparent;
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 1px;
+    transition: 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.admin-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.admin-btn:hover::before {
+    left: 100%;
+}
+
+.admin-btn:hover {
+    background: linear-gradient(135deg, #e60000, #ff3333);
+    border-color: #ff6666;
+    box-shadow: 0 0 25px rgba(230, 0, 0, 0.5);
+    transform: translateY(-2px);
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 700px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 35px 30px;
+        border-radius: 14px;
+    }
+    
+    .titulo {
+        font-size: 1.8rem;
+    }
+    
+    .campo label {
+        font-size: 0.9rem;
+    }
+    
+    .campo input[type="text"],
+    .campo input[type="email"],
+    .campo input[type="password"],
+    .campo select {
+        padding: 12px 14px;
+        font-size: 0.95rem;
+    }
+    
+    button[type="submit"] {
+        font-size: 1rem;
+        padding: 14px;
+    }
+    
+    .admin-btn {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 25px 20px;
+    }
+    
+    .titulo {
+        font-size: 1.5rem;
+        margin-bottom: 25px;
+    }
+}

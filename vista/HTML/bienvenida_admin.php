@@ -42,7 +42,7 @@ $usuario = $_SESSION['usuario'];
                         <td><?php echo htmlspecialchars($user['Rol']); ?></td>
                         <td>
                             <a href="editar_usuario.php?id=<?php echo $user['Id_Usuario']; ?>">Editar</a> |
-                            <a href="borrar_usuario.php?id=<?php echo $user['Id_Usuario']; ?>">Borrar</a>
+                            <a href="../../modelo/eliminar_usuario.php?id=<?php echo $user['Id_Usuario']; ?>">Borrar</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
