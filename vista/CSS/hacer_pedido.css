@@ -1,0 +1,436 @@
+/* Fuente con estética japonesa refinada */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Serif+JP:wght@400;600&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(230, 0, 0, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(179, 0, 0, 0.08) 0%, transparent 50%);
+    font-family: 'Noto Serif JP', serif;
+    color: #f1f1f1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 40px;
+}
+
+/* ====== TÍTULO PRINCIPAL ====== */
+body > h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #e60000;
+    margin: 0 0 40px 0;
+    padding-bottom: 20px;
+    border-bottom: 3px solid;
+    border-image: linear-gradient(90deg, #e60000, #b30000, transparent) 1;
+    letter-spacing: 2px;
+    text-shadow: 0 4px 15px rgba(230, 0, 0, 0.4);
+    background: linear-gradient(135deg, #e60000, #ff6666);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
+    max-width: 900px;
+    width: 100%;
+}
+
+/* ====== FORMULARIO ====== */
+form {
+    background: linear-gradient(145deg, rgba(25, 25, 25, 0.98), rgba(20, 20, 20, 0.98));
+    border: 2px solid #e60000;
+    border-radius: 20px;
+    padding: 60px 70px;
+    max-width: 900px;
+    width: 100%;
+    box-shadow: 
+        0 0 50px rgba(230, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+    overflow: hidden;
+}
+
+form:hover {
+    box-shadow: 
+        0 0 70px rgba(230, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    border-color: #ff3333;
+}
+
+/* ====== LABELS ====== */
+form > label,
+#section_mesa label,
+#section_domicilio label {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ff6666;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 24px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+form > label:first-of-type {
+    margin-top: 0;
+}
+
+form > label:hover,
+#section_mesa label:hover,
+#section_domicilio label:hover {
+    color: #ff9999;
+    text-shadow: 0 0 8px rgba(230, 0, 0, 0.3);
+}
+
+/* ====== SELECT E INPUTS ====== */
+select,
+input[type="text"] {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid rgba(230, 0, 0, 0.3);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    color: #f1f1f1;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1rem;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23ff6666' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 40px;
+}
+
+input[type="text"] {
+    background-image: none;
+    padding-right: 16px;
+    cursor: text;
+}
+
+select:hover,
+input[type="text"]:hover {
+    border-color: rgba(230, 0, 0, 0.5);
+    background-color: rgba(230, 0, 0, 0.05);
+}
+
+select:focus,
+input[type="text"]:focus {
+    outline: none;
+    border-color: #e60000;
+    background-color: rgba(230, 0, 0, 0.08);
+    box-shadow: 
+        0 0 20px rgba(230, 0, 0, 0.3),
+        inset 0 0 15px rgba(230, 0, 0, 0.05);
+    transform: scale(1.01);
+}
+
+select option {
+    background: #1a1a1a;
+    color: #f1f1f1;
+    padding: 10px;
+}
+
+input[type="text"]::placeholder {
+    color: rgba(241, 241, 241, 0.4);
+}
+
+/* ====== SECCIONES DINÁMICAS ====== */
+#section_mesa,
+#section_domicilio {
+    position: relative;
+    z-index: 1;
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ====== TÍTULO DE PLATILLOS ====== */
+h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #e60000;
+    margin: 45px 0 25px 0;
+    padding-bottom: 15px;
+    border-bottom: 2px solid rgba(230, 0, 0, 0.3);
+    letter-spacing: 1px;
+    text-shadow: 0 2px 8px rgba(230, 0, 0, 0.3);
+    position: relative;
+    z-index: 1;
+}
+
+/* ====== ITEMS DE PLATILLOS ====== */
+.plato-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 2px solid rgba(230, 0, 0, 0.2);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.plato-item:hover {
+    background: rgba(230, 0, 0, 0.08);
+    border-color: rgba(230, 0, 0, 0.4);
+    box-shadow: inset 0 0 15px rgba(230, 0, 0, 0.05);
+}
+
+.plato-item strong {
+    color: #ff6666;
+    font-size: 1.05rem;
+    flex: 1;
+}
+
+.plato-item input[type="number"] {
+    width: 80px;
+    padding: 8px 12px;
+    border: 2px solid rgba(230, 0, 0, 0.3);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    color: #f1f1f1;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.plato-item input[type="number"]:hover {
+    border-color: rgba(230, 0, 0, 0.5);
+    background: rgba(230, 0, 0, 0.05);
+}
+
+.plato-item input[type="number"]:focus {
+    outline: none;
+    border-color: #e60000;
+    background: rgba(230, 0, 0, 0.08);
+    box-shadow: 0 0 15px rgba(230, 0, 0, 0.3);
+    transform: scale(1.05);
+}
+
+/* ====== BOTÓN SUBMIT ====== */
+button[type="submit"] {
+    position: relative;
+    width: 100%;
+    padding: 18px 32px;
+    margin-top: 35px;
+    border-radius: 12px;
+    border: 2px solid #e60000;
+    color: #fff;
+    background: linear-gradient(135deg, #e60000, #b30000);
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    font-size: 1.15rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(230, 0, 0, 0.4);
+    z-index: 1;
+}
+
+button[type="submit"]::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+    z-index: -1;
+}
+
+button[type="submit"]:hover {
+    background: linear-gradient(135deg, #ff3333, #e60000);
+    border-color: #ff6666;
+    box-shadow: 0 12px 35px rgba(230, 0, 0, 0.6);
+    transform: translateY(-3px);
+}
+
+button[type="submit"]:hover::before {
+    left: 100%;
+}
+
+button[type="submit"]:active {
+    transform: translateY(-1px);
+}
+
+/* ====== EFECTOS DECORATIVOS ====== */
+form::before,
+form::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    z-index: 0;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+    pointer-events: none;
+}
+
+form::before {
+    width: 200px;
+    height: 200px;
+    top: -100px;
+    left: -100px;
+    background: radial-gradient(circle, rgba(230, 0, 0, 0.15), transparent 70%);
+    filter: blur(40px);
+}
+
+form::after {
+    width: 200px;
+    height: 200px;
+    bottom: -100px;
+    right: -100px;
+    background: radial-gradient(circle, rgba(179, 0, 0, 0.15), transparent 70%);
+    filter: blur(40px);
+}
+
+form:hover::before {
+    top: -50px;
+    left: -50px;
+}
+
+form:hover::after {
+    bottom: -50px;
+    right: -50px;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 900px) {
+    body {
+        padding: 20px 15px;
+    }
+
+    body > h2 {
+        font-size: 2.4rem;
+        margin-bottom: 30px;
+    }
+
+    form {
+        padding: 50px 50px;
+    }
+
+    h3 {
+        font-size: 1.6rem;
+        margin: 35px 0 20px 0;
+    }
+}
+
+@media (max-width: 700px) {
+    body {
+        padding: 10px;
+    }
+
+    body > h2 {
+        font-size: 2rem;
+        margin-bottom: 25px;
+    }
+
+    form {
+        padding: 40px 30px;
+        border-radius: 16px;
+    }
+
+    form > label,
+    #section_mesa label,
+    #section_domicilio label {
+        font-size: 1rem;
+        margin-top: 20px;
+    }
+
+    select,
+    input[type="text"] {
+        padding: 12px 14px;
+        font-size: 0.95rem;
+    }
+
+    h3 {
+        font-size: 1.4rem;
+        margin: 30px 0 15px 0;
+    }
+
+    .plato-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 14px 16px;
+    }
+
+    .plato-item input[type="number"] {
+        width: 100%;
+    }
+
+    button[type="submit"] {
+        padding: 16px 24px;
+        font-size: 1rem;
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    body > h2 {
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+    }
+
+    form {
+        padding: 30px 20px;
+    }
+
+    form > label,
+    #section_mesa label,
+    #section_domicilio label {
+        font-size: 0.95rem;
+    }
+
+    select,
+    input[type="text"] {
+        padding: 12px 12px;
+        font-size: 0.9rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+        margin: 25px 0 12px 0;
+    }
+
+    .plato-item {
+        padding: 12px 14px;
+    }
+
+    .plato-item strong {
+        font-size: 1rem;
+    }
+
+    button[type="submit"] {
+        padding: 14px 20px;
+        font-size: 0.95rem;
+    }
+}

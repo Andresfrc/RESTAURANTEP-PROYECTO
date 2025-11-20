@@ -1,31 +1,25 @@
 <?php
 require_once __DIR__ . '/../modelo/platos.php';
 
-
-
 class PlatoController {
-
-   
     private $platoModel;
 
-    
     public function __construct(){
-       
         $this->platoModel = new Plato();
     }
 
-    
     public function agregarPlato() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $nombre = $_POST['nombre'];
             $descripcion = $_POST['descripcion'];
             $precio = $_POST['precio'];
+            $categoriaId = $_POST['categoria'] ?? null;
             $imagenPath = null; 
 
-           
+            // Manejar la subida de imagen
             if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
-               $uploadDir = __DIR__ . '/../vista/IMG/platos/';
-               $imagenPath = $uploadDir . basename($_FILES['imagen']['name']);
+                $uploadDir = __DIR__ . '/../vista/IMG/platos/';
+                $imagenPath = $uploadDir . basename($_FILES['imagen']['name']);
 
                 if (!is_dir($uploadDir)) {
                     mkdir($uploadDir, 0755, true); 
@@ -34,12 +28,11 @@ class PlatoController {
                 $imagenTmpPath = $_FILES['imagen']['tmp_name']; 
                 $imagenName = basename($_FILES['imagen']['name']); 
 
-                
                 move_uploaded_file($imagenTmpPath, $imagenPath);
             }
 
             // Llamar al modelo para agregar el plato
-            $this->platoModel->agregarPlato($nombre, $descripcion, $precio, $imagenPath);
+            $this->platoModel->agregarPlato($nombre, $descripcion, $precio, $imagenPath, $categoriaId);
 
             // Redirigir o mostrar un mensaje de éxito
             header("Location: ../vista/HTML/crear_plato.php?success=1");

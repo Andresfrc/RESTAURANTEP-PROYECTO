@@ -1,0 +1,208 @@
+/* Fuente con estética japonesa refinada */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Serif+JP:wght@400;600&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(230, 0, 0, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(179, 0, 0, 0.08) 0%, transparent 50%);
+    font-family: 'Noto Serif JP', serif;
+    color: #f1f1f1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+}
+
+/* ====== TÍTULO PRINCIPAL ====== */
+h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #e60000;
+    margin: 0 0 40px 0;
+    padding-bottom: 20px;
+    border-bottom: 3px solid;
+    border-image: linear-gradient(90deg, #e60000, #b30000, transparent) 1;
+    letter-spacing: 2px;
+    text-shadow: 0 4px 15px rgba(230, 0, 0, 0.4);
+    background: linear-gradient(135deg, #e60000, #ff6666);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+}
+
+/* ====== FORMULARIO ====== */
+form {
+    background: linear-gradient(145deg, rgba(25, 25, 25, 0.98), rgba(20, 20, 20, 0.98));
+    border: 2px solid #e60000;
+    border-radius: 20px;
+    padding: 50px 60px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 
+        0 0 50px rgba(230, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+    margin-bottom: 30px;
+}
+
+form:hover {
+    box-shadow: 
+        0 0 70px rgba(230, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    border-color: #ff3333;
+}
+
+/* ====== LABELS ====== */
+label {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ff6666;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    margin-top: 20px;
+}
+
+label:first-of-type {
+    margin-top: 0;
+}
+
+/* ====== INPUTS Y SELECT ====== */
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid rgba(230, 0, 0, 0.3);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    color: #f1f1f1;
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1rem;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+    margin-bottom: 10px;
+}
+
+select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23ff6666' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    padding-right: 40px;
+    cursor: pointer;
+}
+
+select option {
+    background: #1a1a1a;
+    color: #f1f1f1;
+    padding: 10px;
+}
+
+input:hover,
+select:hover {
+    border-color: rgba(230, 0, 0, 0.5);
+    background-color: rgba(230, 0, 0, 0.05);
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #e60000;
+    background-color: rgba(230, 0, 0, 0.08);
+    box-shadow: 
+        0 0 20px rgba(230, 0, 0, 0.3),
+        inset 0 0 15px rgba(230, 0, 0, 0.05);
+    transform: scale(1.01);
+}
+
+/* ====== BOTÓN SUBMIT ====== */
+button[type="submit"] {
+    position: relative;
+    width: 100%;
+    padding: 16px 32px;
+    margin-top: 35px;
+    border-radius: 12px;
+    border: 2px solid #e60000;
+    color: #fff;
+    background: linear-gradient(135deg, #e60000, #b30000);
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(230, 0, 0, 0.4);
+}
+
+button[type="submit"]:hover {
+    background: linear-gradient(135deg, #ff3333, #e60000);
+    border-color: #ff6666;
+    box-shadow: 0 12px 35px rgba(230, 0, 0, 0.6);
+    transform: translateY(-2px);
+}
+
+/* ====== ENLACE VOLVER ====== */
+a[href="listar_mesas.php"] {
+    display: inline-block;
+    padding: 15px 30px;
+    background: transparent;
+    border: 2px solid #e60000;
+    color: #e60000;
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+}
+
+a[href="listar_mesas.php"]:hover {
+    background: #e60000;
+    color: #fff;
+    box-shadow: 0 0 20px rgba(230, 0, 0, 0.4);
+    transform: translateY(-2px);
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 600px) {
+    body {
+        padding: 20px 15px;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+        margin-bottom: 30px;
+    }
+
+    form {
+        padding: 40px 30px;
+    }
+
+    input, select {
+        padding: 12px 14px;
+        font-size: 0.95rem;
+    }
+
+    button[type="submit"] {
+        padding: 14px 24px;
+        font-size: 1rem;
+    }
+}

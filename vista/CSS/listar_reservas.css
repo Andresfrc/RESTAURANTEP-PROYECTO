@@ -1,0 +1,172 @@
+/* Fuente con estética japonesa refinada */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Serif+JP:wght@400;600&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(230, 0, 0, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(179, 0, 0, 0.08) 0%, transparent 50%);
+    font-family: 'Noto Serif JP', serif;
+    color: #f1f1f1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 40px;
+}
+
+/* ====== TÍTULO PRINCIPAL ====== */
+h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #e60000;
+    margin: 0 0 40px 0;
+    padding-bottom: 20px;
+    border-bottom: 3px solid;
+    border-image: linear-gradient(90deg, #e60000, #b30000, transparent) 1;
+    letter-spacing: 2px;
+    text-shadow: 0 4px 15px rgba(230, 0, 0, 0.4);
+    background: linear-gradient(135deg, #e60000, #ff6666);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
+    max-width: 900px;
+    width: 100%;
+}
+
+/* ====== TABLA DE RESERVAS ====== */
+table {
+    width: 100%;
+    max-width: 1200px; /* Un poco más ancho para que quepan más columnas */
+    border-collapse: collapse;
+    background: linear-gradient(145deg, rgba(25, 25, 25, 0.95), rgba(20, 20, 20, 0.95));
+    border: 2px solid #e60000;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 
+        0 0 30px rgba(230, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    margin-bottom: 40px;
+    color: #f1f1f1;
+}
+
+th {
+    background: linear-gradient(135deg, #b30000, #800000);
+    color: #fff;
+    padding: 18px 12px;
+    text-align: left;
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #e60000;
+    font-size: 0.95rem;
+}
+
+td {
+    padding: 15px 12px;
+    border-bottom: 1px solid rgba(230, 0, 0, 0.2);
+    font-size: 0.95rem;
+    vertical-align: middle;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:hover td {
+    background-color: rgba(230, 0, 0, 0.08);
+}
+
+/* ====== ACCIONES (LINKS) ====== */
+td a {
+    display: inline-block;
+    text-decoration: none;
+    margin-right: 5px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+/* Confirmar */
+td a[href*="Confirmada"] {
+    color: #4caf50;
+    padding: 6px 10px;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    border-radius: 6px;
+    background: rgba(76, 175, 80, 0.1);
+}
+
+td a[href*="Confirmada"]:hover {
+    background: rgba(76, 175, 80, 0.2);
+    border-color: #4caf50;
+    transform: scale(1.05);
+}
+
+/* Cancelar */
+td a[href*="cancelar"] {
+    color: #ef5350;
+    padding: 6px 10px;
+    border: 1px solid rgba(239, 83, 80, 0.3);
+    border-radius: 6px;
+    background: rgba(239, 83, 80, 0.1);
+}
+
+td a[href*="cancelar"]:hover {
+    background: rgba(239, 83, 80, 0.2);
+    border-color: #ef5350;
+    transform: scale(1.05);
+}
+
+/* ====== ENLACE VOLVER ====== */
+body > a[href="bienvenida_admin.php"] {
+    display: inline-block;
+    padding: 15px 30px;
+    background: transparent;
+    border: 2px solid #e60000;
+    color: #e60000;
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+}
+
+body > a[href="bienvenida_admin.php"]:hover {
+    background: #e60000;
+    color: #fff;
+    box-shadow: 0 0 20px rgba(230, 0, 0, 0.4);
+    transform: translateY(-2px);
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 1024px) {
+    body {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+        margin-bottom: 30px;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    th, td {
+        padding: 12px 10px;
+        font-size: 0.9rem;
+    }
+}

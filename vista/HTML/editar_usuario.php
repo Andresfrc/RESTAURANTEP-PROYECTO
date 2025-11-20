@@ -25,7 +25,7 @@ if (!$usuario) {
 <body>
     <div class="container">
         <h1 class="titulo">✏️ Editar Usuario</h1>
-        <form class="formulario" action="../controlador/editar_usuario_controlador.php" method="POST">
+        <form class="formulario" action="../../controlador/editar_usuario_controlador.php" method="POST">
             <input type="hidden" name="id" value="<?php echo $usuario['Id_Usuario']; ?>">
 
             <div class="campo">

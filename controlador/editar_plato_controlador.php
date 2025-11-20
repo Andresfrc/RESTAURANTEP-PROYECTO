@@ -6,6 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nombre = $_POST['nombre'];
     $descripcion = $_POST['descripcion'];
     $precio = $_POST['precio'];
+    $categoriaId = $_POST['categoria'] ?? null;
 
     $platoModel = new Plato();
     $plato = $platoModel->obtenerPlato($id);
@@ -31,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    $platoModel->actualizarPlato($id, $nombre, $descripcion, $precio, $imagenPath);
+    $platoModel->actualizarPlato($id, $nombre, $descripcion, $precio, $imagenPath, $categoriaId);
     header("Location: ../vista/HTML/listar_platos.php?msg=Plato actualizado correctamente");
     exit;
 }

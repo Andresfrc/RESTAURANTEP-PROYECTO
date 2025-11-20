@@ -1,7 +1,9 @@
 <?php
 require_once __DIR__ . "/platos.php";
+require_once __DIR__ . "/categoria.php";
 
 $platoModel = new Plato();
+$categoriaModel = new Categoria();
 
 if (!isset($_GET['id'])) {
     die("ID no especificado.");
@@ -9,6 +11,7 @@ if (!isset($_GET['id'])) {
 
 $id = intval($_GET['id']);
 $plato = $platoModel->obtenerPlato($id);
+$categorias = $categoriaModel->listarCategorias();
 
 if (!$plato) {
     die("Plato no encontrado.");
@@ -44,6 +47,19 @@ if (!$plato) {
             </div>
 
             <div class="campo">
+                <label for="categoria">Categoría:</label>
+                <select id="categoria" name="categoria">
+                    <option value="">Sin categoría</option>
+                    <?php foreach ($categorias as $cat): ?>
+                        <option value="<?php echo $cat['Id_Categoria']; ?>" 
+                            <?php echo ($plato['CategoriaId_Categoria'] == $cat['Id_Categoria']) ? 'selected' : ''; ?>>
+                            <?php echo htmlspecialchars($cat['Nombre']); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+            <div class="campo">
                 <label>Imagen actual:</label><br>
                 <?php 
                 if (!empty($plato['Imagen']) && file_exists($plato['Imagen'])) {
@@ -61,7 +77,7 @@ if (!$plato) {
             </div>
 
             <button type="submit">Actualizar Platillo</button>
-            <a href="listar_platos.php" class="admin-btn">Volver</a>
+            <a href="../vista/HTML/listar_platos.php" class="admin-btn">Volver</a>
         </form>
     </div>
 </body>

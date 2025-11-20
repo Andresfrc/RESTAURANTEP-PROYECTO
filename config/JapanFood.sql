@@ -1,131 +1,112 @@
--- Active: 1755274355020@@127.0.0.1@3306@mysql
+DROP DATABASE IF EXISTS JapanFood;
 CREATE DATABASE JapanFood;
 USE JapanFood;
 
 -- --------------------------------------------------------
 -- Tabla: categoria
 -- --------------------------------------------------------
-CREATE TABLE `categoria` (
-  `Id_Categoria` INT(5) NOT NULL AUTO_INCREMENT,
-  `Nombre` VARCHAR(50) NOT NULL,
-  PRIMARY KEY (`Id_Categoria`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE categoria (
+  Id_Categoria INT AUTO_INCREMENT PRIMARY KEY,
+  Nombre VARCHAR(50) NOT NULL
+) ENGINE=InnoDB;
 
 -- --------------------------------------------------------
 -- Tabla: usuarios
 -- --------------------------------------------------------
-CREATE TABLE `usuarios` (
-  `Id_Usuario` INT(5) NOT NULL AUTO_INCREMENT,
-  `Nombre` VARCHAR(100) NOT NULL,
-  `Email` VARCHAR(100) NOT NULL UNIQUE,
-  `Password` VARCHAR(255) NOT NULL,
-  `Rol` VARCHAR(20) NOT NULL,
-  PRIMARY KEY (`Id_Usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE usuarios (
+  Id_Usuario INT AUTO_INCREMENT PRIMARY KEY,
+  Nombre VARCHAR(100) NOT NULL,
+  Email VARCHAR(100) NOT NULL UNIQUE,
+  Password VARCHAR(255) NOT NULL,
+  Rol VARCHAR(20) NOT NULL
+) ENGINE=InnoDB;
 
 -- --------------------------------------------------------
--- Tabla: detallepedido
+-- Tabla: mesa
 -- --------------------------------------------------------
-CREATE TABLE `detallepedido` (
-  `Id_Detalle` INT(5) NOT NULL AUTO_INCREMENT,
-  `Cantidad` INT(10) NOT NULL,
-  `PrecioUnitario` DECIMAL(10,2) NOT NULL,
-  `PedidoId_Pedido` INT(5) DEFAULT NULL,
-  `PlatilloId_Platillo` INT(5) DEFAULT NULL,
-  PRIMARY KEY (`Id_Detalle`),
-  KEY `PedidoId_Pedido` (`PedidoId_Pedido`),
-  KEY `PlatilloId_Platillo` (`PlatilloId_Platillo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
--- Tabla: pago
--- --------------------------------------------------------
-CREATE TABLE `pago` (
-  `Id_Pago` INT(5) NOT NULL AUTO_INCREMENT,
-  `Monto` DECIMAL(10,2) NOT NULL,
-  `TipoPago` VARCHAR(50) NOT NULL,
-  `PedidoId_Pedido` INT(5) DEFAULT NULL,
-  PRIMARY KEY (`Id_Pago`),
-  KEY `PedidoId_Pedido` (`PedidoId_Pedido`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
--- Tabla: pedido
--- --------------------------------------------------------
-CREATE TABLE `pedido` (
-  `Id_Pedido` INT(5) NOT NULL AUTO_INCREMENT,
-  `Fecha` DATE NOT NULL,
-  `TipoPedido` VARCHAR(20) NOT NULL,
-  `Estado` VARCHAR(50) NOT NULL,
-  `Subtotal` DECIMAL(10,2) DEFAULT NULL,
-  `Impuestos` DECIMAL(10,2) DEFAULT NULL,
-  `ClienteId_Cliente` INT(5) DEFAULT NULL,
-  `SucursalId` INT(5) DEFAULT NULL,
-  PRIMARY KEY (`Id_Pedido`),
-  KEY `ClienteId_Cliente` (`ClienteId_Cliente`),
-  KEY `SucursalId` (`SucursalId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE mesa (
+    Id_Mesa INT AUTO_INCREMENT PRIMARY KEY,
+    Numero_Mesa INT NOT NULL,
+    Capacidad INT NOT NULL,
+    Ubicacion VARCHAR(50) NOT NULL,
+    Estado ENUM('Libre', 'Ocupada', 'Reservada') DEFAULT 'Libre'
+) ENGINE=InnoDB;
 
 -- --------------------------------------------------------
 -- Tabla: platillo
 -- --------------------------------------------------------
-CREATE TABLE `platillo` (
-  `Id_Platillo` INT(5) NOT NULL AUTO_INCREMENT,
-  `Nombre` VARCHAR(50) NOT NULL,
-  `Descripcion` VARCHAR(255) DEFAULT NULL,
-  `Precio` DECIMAL(10,2) DEFAULT NULL,
-  `Imagen` VARCHAR(255) DEFAULT NULL,
-  PRIMARY KEY (`Id_Platillo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE platillo (
+  Id_Platillo INT AUTO_INCREMENT PRIMARY KEY,
+  Nombre VARCHAR(50) NOT NULL,
+  Descripcion VARCHAR(255),
+  Precio DECIMAL(10,2),
+  Imagen VARCHAR(255),
+  CategoriaId_Categoria INT,
+  FOREIGN KEY (CategoriaId_Categoria) REFERENCES categoria(Id_Categoria) ON DELETE SET NULL
+) ENGINE=InnoDB;
+
+-- --------------------------------------------------------
+-- Tabla: pedido
+-- --------------------------------------------------------
+CREATE TABLE pedido (
+  Id_Pedido INT AUTO_INCREMENT PRIMARY KEY,
+  Fecha DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  Estado ENUM('Pendiente','En Preparación','Entregado','Cancelado') DEFAULT 'Pendiente',
+  Subtotal DECIMAL(10,2) DEFAULT 0,
+  Impuestos DECIMAL(10,2) DEFAULT 0,
+  Total DECIMAL(10,2) DEFAULT 0,
+  Direccion_Entrega VARCHAR(255) DEFAULT NULL,
+  Telefono_Entrega VARCHAR(20) DEFAULT NULL,
+  Usuario_Id INT NOT NULL,
+  Mesa_Id INT NULL,
+  FOREIGN KEY (Usuario_Id) REFERENCES usuarios(Id_Usuario),
+  FOREIGN KEY (Mesa_Id) REFERENCES mesa(Id_Mesa)
+) ENGINE=InnoDB;
+
+-- --------------------------------------------------------
+-- Tabla: detallepedido
+-- --------------------------------------------------------
+CREATE TABLE detallepedido (
+  Id_Detalle INT AUTO_INCREMENT PRIMARY KEY,
+  Pedido_Id INT NOT NULL,
+  Platillo_Id INT NOT NULL,
+  Cantidad INT NOT NULL,
+  PrecioUnitario DECIMAL(10,2) NOT NULL,
+  FOREIGN KEY (Pedido_Id) REFERENCES pedido(Id_Pedido) ON DELETE CASCADE,
+  FOREIGN KEY (Platillo_Id) REFERENCES platillo(Id_Platillo)
+) ENGINE=InnoDB;
+
+-- --------------------------------------------------------
+-- Tabla: pago
+-- --------------------------------------------------------
+CREATE TABLE pago (
+  Id_Pago INT AUTO_INCREMENT PRIMARY KEY,
+  Monto DECIMAL(10,2) NOT NULL,
+  TipoPago VARCHAR(50) NOT NULL,
+  Estado VARCHAR(20) DEFAULT 'Pendiente',
+  PedidoId_Pedido INT,
+  FOREIGN KEY (PedidoId_Pedido) REFERENCES pedido(Id_Pedido) ON DELETE CASCADE
+) ENGINE=InnoDB;
 
 -- --------------------------------------------------------
 -- Tabla: reserva
 -- --------------------------------------------------------
-CREATE TABLE `reserva` (
-  `Id_Reserva` INT(5) NOT NULL AUTO_INCREMENT,
-  `Fecha` DATE NOT NULL,
-  `Hora` TIME NOT NULL,
-  `Cantidad_Personas` INT(2) NOT NULL,
-  `Descripcion` VARCHAR(255) DEFAULT NULL,
-  `ClienteId_Cliente` INT(5) DEFAULT NULL,
-  `SucursalId` INT(5) DEFAULT NULL,
-  PRIMARY KEY (`Id_Reserva`),
-  KEY `ClienteId_Cliente` (`ClienteId_Cliente`),
-  KEY `SucursalId` (`SucursalId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE reserva (
+    Id_Reserva INT AUTO_INCREMENT PRIMARY KEY,
+    Usuario_Id INT NOT NULL,
+    Mesa_Id INT NULL,
+    Fecha DATE NOT NULL,
+    Hora TIME NOT NULL,
+    Cantidad_Personas INT NOT NULL,
+    Descripcion TEXT NULL,
+    Estado ENUM('Pendiente', 'Confirmada', 'Cancelada') DEFAULT 'Pendiente',
+    Fecha_Creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (Usuario_Id) REFERENCES usuarios(Id_Usuario),
+    FOREIGN KEY (Mesa_Id) REFERENCES mesa(Id_Mesa)
+) ENGINE=InnoDB;
 
 -- --------------------------------------------------------
--- Tabla: sucursal
+-- Datos iniciales
 -- --------------------------------------------------------
-CREATE TABLE `sucursal` (
-  `Id_Sucursal` INT(5) NOT NULL AUTO_INCREMENT,
-  `Nombre` VARCHAR(30) DEFAULT NULL,
-  `Direccion` VARCHAR(255) DEFAULT NULL,
-  `Ciudad` VARCHAR(20) DEFAULT NULL,
-  `Imagen` VARCHAR(255) DEFAULT NULL,
-  PRIMARY KEY (`Id_Sucursal`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
--- Relaciones (FOREIGN KEYS)
--- --------------------------------------------------------
-
-ALTER TABLE `detallepedido`
-  ADD CONSTRAINT `detallepedido_ibfk_1` FOREIGN KEY (`PedidoId_Pedido`) REFERENCES `pedido` (`Id_Pedido`),
-  ADD CONSTRAINT `detallepedido_ibfk_2` FOREIGN KEY (`PlatilloId_Platillo`) REFERENCES `platillo` (`Id_Platillo`);
-
-ALTER TABLE `pago`
-  ADD CONSTRAINT `pago_ibfk_1` FOREIGN KEY (`PedidoId_Pedido`) REFERENCES `pedido` (`Id_Pedido`);
-
-ALTER TABLE `pedido`
-  ADD CONSTRAINT `pedido_ibfk_1` FOREIGN KEY (`ClienteId_Cliente`) REFERENCES `usuarios` (`Id_Usuario`),
-  ADD CONSTRAINT `pedido_ibfk_2` FOREIGN KEY (`SucursalId`) REFERENCES `sucursal` (`Id_Sucursal`);
-
-ALTER TABLE `platillo`
-  ADD CONSTRAINT `platillo_ibfk_1` FOREIGN KEY (`CategoriaId_Categoria`) REFERENCES `categoria` (`Id_Categoria`);
-
-ALTER TABLE `reserva`
-  ADD CONSTRAINT `reserva_ibfk_1` FOREIGN KEY (`ClienteId_Cliente`) REFERENCES `usuarios` (`Id_Usuario`),
-  ADD CONSTRAINT `reserva_ibfk_2` FOREIGN KEY (`SucursalId`) REFERENCES `sucursal` (`Id_Sucursal`);
-
-COMMIT;
+INSERT INTO categoria (Nombre) VALUES
+('Entradas'), ('Platos Fuertes'), ('Postres'), ('Bebidas');

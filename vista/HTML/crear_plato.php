@@ -1,3 +1,9 @@
+<?php
+require_once __DIR__ . "/../../modelo/categoria.php";
+
+$categoriaModel = new Categoria();
+$categorias = $categoriaModel->listarCategorias();
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,6 +15,11 @@
 <body>
     <div class="container">
         <h1 class="titulo"> Agregar Platillo</h1>
+        
+        <?php if (isset($_GET['success'])): ?>
+            <div class="alert-success">✅ Platillo agregado exitosamente</div>
+        <?php endif; ?>
+
         <form class="formulario" action="../../controlador/plato_controlador.php" method="POST" enctype="multipart/form-data">
 
             <div class="campo">
@@ -25,6 +36,8 @@
                 <label for="precio">Precio:</label>
                 <input placeholder="0.00" type="number" id="precio" name="precio" step="0.01" min="0" required>
             </div>
+
+           
             
             <div class="campo">
                 <label for="imagen">Imagen del Platillo:</label>

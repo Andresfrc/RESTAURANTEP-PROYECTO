@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Actualizar usuario con todos los campos
     $usuarioModel->actualizar_usuario_completo($id, $nombre, $rol, $password);
 
-    header("Location: ../vista/bienvenida_admin.php?msg=Usuario actualizado correctamente");
+    header("Location: ../vista/HTML/bienvenida_admin.php?msg=Usuario actualizado correctamente");
     exit;
 }
 ?>
