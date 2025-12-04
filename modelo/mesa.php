@@ -11,7 +11,7 @@ class Mesa {
     // Registrar mesa
     public function registrarMesa($numero, $capacidad, $ubicacion) {
         $query = "INSERT INTO mesa (Numero_Mesa, Capacidad, Ubicacion, Estado) 
-                  VALUES (?, ?, ?, 'Disponible')";
+                  VALUES (?, ?, ?, 'Libre')";
         $stmt = $this->db->prepare($query);
         return $stmt->execute([$numero, $capacidad, $ubicacion]);
     }
@@ -26,7 +26,8 @@ class Mesa {
 
     // Listar solo disponibles
     public function listarMesasDisponibles() {
-        $query = "SELECT * FROM mesa WHERE Estado = 'Disponible'";
+        // Mostrar mesas que estén Libres o Ocupadas (no Reservadas completamente)
+        $query = "SELECT * FROM mesa WHERE Estado IN ('Libre', 'Ocupada') ORDER BY Numero_Mesa ASC";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -61,6 +61,9 @@ $pedidos = $pedidoModel->listarPedidosUsuario($usuarioId);
     <p>No tienes pedidos registrados.</p>
 <?php endif; ?>
 
+
+
+
 <a href="bienvenida_usuario.php">⬅ Volver al Panel</a>
 
 </body>

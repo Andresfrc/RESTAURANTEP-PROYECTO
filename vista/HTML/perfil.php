@@ -48,8 +48,7 @@ session_start();
                     <input type="password" name="password" class="form-control" id="password" placeholder="•••••" required>
                 </div>
                 <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="remember">
-                    <label class="form-check-label" for="remember">Recordarme</label>
+                    
                 </div>
                 <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
                 <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0&ab_channel=Duran" class="forgot-password">¿Olvidaste tu contraseña?</a>

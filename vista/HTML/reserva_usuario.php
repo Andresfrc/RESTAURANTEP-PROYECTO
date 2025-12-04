@@ -8,6 +8,11 @@ if (!isset($_SESSION['usuario'])) {
 require_once __DIR__ . "/../../modelo/mesa.php";
 $mesaModel = new Mesa();
 $mesasDisponibles = $mesaModel->listarMesasDisponibles();
+// Si no hay mesas con estado 'Libre', mostrar todas disponibles
+if (empty($mesasDisponibles)) {
+    $mesasDisponibles = $mesaModel->listarMesas();
+}
+$mesasReservadas = [];
 ?>
 
 <!DOCTYPE html>

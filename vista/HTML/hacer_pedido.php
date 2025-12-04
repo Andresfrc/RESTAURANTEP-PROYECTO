@@ -43,7 +43,7 @@ $platillos = $platoModel->listarPlatos();
             <option value="">Sin preferencia</option>
             <?php foreach ($mesas as $mesa): ?>
                 <option value="<?= $mesa['Id_Mesa'] ?>">
-                    Mesa <?= htmlspecialchars($mesa['Numero']) ?>
+                    Mesa <?= htmlspecialchars($mesa['Numero_Mesa']) ?>
                 </option>
             <?php endforeach; ?>
         </select>

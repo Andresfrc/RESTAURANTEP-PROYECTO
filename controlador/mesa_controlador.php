@@ -13,7 +13,7 @@ class MesaController {
             $numeroMesa = $_POST['numero_mesa'] ?? '';
             $capacidad = $_POST['capacidad'] ?? '';
             $ubicacion = $_POST['ubicacion'] ?? '';
-            $estado = $_POST['estado'] ?? 'Disponible';
+            $estado = $_POST['estado'] ?? 'Libre';
 
             $resultado = $this->mesaModel->registrarMesa($numeroMesa, $capacidad, $ubicacion, $estado);
 
@@ -35,7 +35,7 @@ class MesaController {
             $numeroMesa = $_POST['numero_mesa'] ?? '';
             $capacidad = $_POST['capacidad'] ?? '';
             $ubicacion = $_POST['ubicacion'] ?? '';
-            $estado = $_POST['estado'] ?? 'Disponible';
+            $estado = $_POST['estado'] ?? 'Libre';
 
             $resultado = $this->mesaModel->actualizarMesa($id, $numeroMesa, $capacidad, $ubicacion, $estado);
 

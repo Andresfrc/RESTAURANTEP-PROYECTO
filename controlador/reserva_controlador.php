@@ -28,7 +28,7 @@ switch ($accion) {
         // Solo validar la mesa si se seleccionó
         if ($mesaId) {
             $mesa = $mesaModel->obtenerMesa($mesaId);
-            if (!$mesa || $mesa['Estado'] !== 'Disponible') {
+            if (!$mesa || $mesa['Estado'] !== 'Libre') {
                 $_SESSION['error'] = "La mesa seleccionada no está disponible.";
                 header("Location: ../vista/HTML/bienvenida_usuario.php");
                 exit;
@@ -44,10 +44,6 @@ switch ($accion) {
         // Crear la reserva
         $ok = $reservaModel->crearReserva($usuarioId, $mesaId, $fecha, $hora, $cantidad, $descripcion);
 
-        if ($ok && $mesaId) {
-            $mesaModel->actualizarEstado($mesaId, "Reservada");
-        }
-
         $_SESSION['mensaje'] = $ok ? "Reserva creada correctamente." : "Error al crear la reserva.";
         header("Location: ../vista/HTML/mis_reservas.php");
         exit;
@@ -59,7 +55,7 @@ switch ($accion) {
     $reserva = $reservaModel->obtenerReserva($reservaId);
 
     if ($reserva['Mesa_Id']) {
-        $mesaModel->actualizarEstado($reserva['Mesa_Id'], "Disponible");
+        $mesaModel->actualizarEstado($reserva['Mesa_Id'], "Libre");
     }
 
     $reservaModel->cancelarReserva($reservaId, $usuarioId);
@@ -87,7 +83,7 @@ switch ($accion) {
         if ($nuevoEstado == 'Confirmada' && $reserva['Mesa_Id']) {
             $mesaModel->actualizarEstado($reserva['Mesa_Id'], 'Reservada');
         } elseif ($nuevoEstado == 'Cancelada' && $reserva['Mesa_Id']) {
-            $mesaModel->actualizarEstado($reserva['Mesa_Id'], 'Disponible');
+            $mesaModel->actualizarEstado($reserva['Mesa_Id'], 'Libre');
         }
 
         $_SESSION['mensaje'] = "Reserva actualizada a '$nuevoEstado' correctamente.";

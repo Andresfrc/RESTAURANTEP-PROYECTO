@@ -42,7 +42,7 @@ $pedidos = $pedidoModel->listarPedidos(); // Todos los pedidos
     </tr>
     <?php foreach($pedidos as $p): 
         $usuario = $usuarioModel->obtenerUsuario($p['Usuario_Id']);
-        $mesa = $p['Mesa_Id'] ? $mesaModel->obtenerMesa($p['Mesa_Id']) : null;
+        $mesa = $p['Mesa_Id'] ? $mesaModel->obtenerMesa(idMesa: $p['Mesa_Id']) : null;
     ?>
     <tr>
         <td><?php echo $p['Id_Pedido']; ?></td>
