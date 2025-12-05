@@ -103,16 +103,24 @@ class Usuario {
     }
 
     public function crear_usuario($nombre, $email, $password, $rol = "Usuario") {
-        $hash = password_hash($password, PASSWORD_BCRYPT);
-        $sql = "INSERT INTO usuarios (Nombre, Email, Password, Rol) 
-                VALUES (:nombre, :email, :password, :rol)";
-        $stmt = $this->db->prepare($sql);
-        return $stmt->execute([
-            ":nombre" => $nombre,
-            ":email" => $email,
-            ":password" => $hash,
-            ":rol" => $rol
-        ]);
+
+    // Verificar si el email ya existe
+    $existe = $this->obtener_usuario($email);
+    if ($existe) {
+        return "email_duplicado";
     }
+
+    $hash = password_hash($password, PASSWORD_BCRYPT);
+    $sql = "INSERT INTO usuarios (Nombre, Email, Password, Rol) 
+            VALUES (:nombre, :email, :password, :rol)";
+    $stmt = $this->db->prepare($sql);
+    return $stmt->execute([
+        ":nombre" => $nombre,
+        ":email" => $email,
+        ":password" => $hash,
+        ":rol" => $rol
+    ]);
+}
+
 }
 ?>

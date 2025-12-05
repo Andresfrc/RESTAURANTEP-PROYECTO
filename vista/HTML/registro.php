@@ -9,6 +9,19 @@
 <body>
   <div class="registro-container">
     <h2>Crear Cuenta</h2>
+    
+    <?php
+      session_start();
+      if (isset($_SESSION['error'])) {
+        echo '<div class="alert alert-error">' . htmlspecialchars($_SESSION['error']) . '</div>';
+        unset($_SESSION['error']);
+      }
+      if (isset($_SESSION['mensaje'])) {
+        echo '<div class="alert alert-success">' . htmlspecialchars($_SESSION['mensaje']) . '</div>';
+        unset($_SESSION['mensaje']);
+      }
+    ?>
+
     <form action="../../controlador/usuario_controlador.php" method="POST" class="form-registro">
       <input type="hidden" name="accion" value="registro">
 

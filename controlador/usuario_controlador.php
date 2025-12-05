@@ -10,14 +10,19 @@ class UsuarioController {
     }
 
     public function registrar() {
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $nombre = $_POST['nombre'] ?? '';
             $email = $_POST['email'] ?? '';
             $password = $_POST['password'] ?? '';
-
             $resultado = $this->modelusuario->crear_usuario($nombre, $email, $password);
 
-            if ($resultado) {
+            if ($resultado === "email_duplicado") {
+                session_start();
+                $_SESSION['error'] = "El email ya está registrado.";
+                header("Location: ../vista/HTML/registro.php");
+                exit;
+            } elseif ($resultado) {
                 // Obtener datos del usuario recién creado para iniciar sesión automáticamente
                 $usuario = $this->modelusuario->login($email, $password);
 
@@ -41,7 +46,7 @@ class UsuarioController {
             } else {
                 session_start();
                 $_SESSION['error'] = "Error al registrar usuario.";
-                header("Location: ../vista/registro/HTML/registro.php");
+                header("Location: ../vista/HTML/registro.php");
                 exit;
             }
         }
